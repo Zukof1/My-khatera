@@ -9,7 +9,38 @@
 </head>
 
 <body>
-    <div class="container" id="main-container">
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <h1>Tap to Open 💌</h1>
+        </div>
+    </div>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-player">
+        <div class="album-art">
+            <span class="music-note">🎵</span>
+        </div>
+        <div class="track-info">
+            <div class="track-name">Haal-e-Dil</div>
+            <div class="artist-name">Harshit Saxena</div>
+        </div>
+        <div class="controls">
+            <button id="play-pause-btn" class="control-btn">
+                <span id="play-icon">▶</span>
+                <span id="pause-icon" class="hidden">⏸</span>
+            </button>
+        </div>
+        <div class="music-bars" id="music-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <div class="container hidden" id="main-container">
         <h1 class="question">Khatera, will you be my Valentine? 💖</h1>
         <div class="gif-container">
             <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWRvanh2YTNneTFhc2Rid3JtM3J5NWpqamhuZXNvaGs0YWlweGNxbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/puJ1vglfvvERO/giphy.gif"
