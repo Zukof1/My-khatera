@@ -79,11 +79,11 @@ function handleInteraction(e) {
 
     // Remove listeners once triggers
     overlay.removeEventListener('click', handleInteraction);
-    overlay.removeEventListener('touchstart', handleInteraction);
+    overlay.removeEventListener('touchend', handleInteraction);
 }
 
 overlay.addEventListener('click', handleInteraction);
-overlay.addEventListener('touchstart', handleInteraction, { passive: false });
+overlay.addEventListener('touchend', handleInteraction, { passive: false });
 
 const noBtn = document.getElementById('no-btn');
 const yesBtn = document.getElementById('yes-btn');
