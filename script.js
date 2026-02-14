@@ -47,20 +47,43 @@ function toggleMusic() {
 
 playPauseBtn.addEventListener('click', toggleMusic);
 
-overlay.addEventListener('click', () => {
-    // Start music via the toggle to sync UI
-    if (bgMusic.paused) {
-        toggleMusic();
+// function to handle the initial interaction
+function handleInteraction(e) {
+    e.preventDefault(); // Prevent double firing (touch + click)
+
+    // Attempt to play music
+    const playPromise = bgMusic.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(_ => {
+            // Automatic playback started!
+            // Update UI to playing state
+            playIcon.classList.add('hidden');
+            pauseIcon.classList.remove('hidden');
+            musicBars.classList.remove('paused');
+            musicNote.style.animationPlayState = 'running';
+        })
+            .catch(error => {
+                console.log("Audio play failed (autoplay policy?):", error);
+                // Even if music fails, we still open the site
+            });
     }
 
+    // Always remove overlay
     overlay.classList.add('fade-out');
     document.getElementById('main-container').classList.remove('hidden');
 
-    // Remove overlay from DOM after fade out
     setTimeout(() => {
         overlay.remove();
     }, 500);
-});
+
+    // Remove listeners once triggers
+    overlay.removeEventListener('click', handleInteraction);
+    overlay.removeEventListener('touchstart', handleInteraction);
+}
+
+overlay.addEventListener('click', handleInteraction);
+overlay.addEventListener('touchstart', handleInteraction, { passive: false });
 
 const noBtn = document.getElementById('no-btn');
 const yesBtn = document.getElementById('yes-btn');
