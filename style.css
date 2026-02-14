@@ -1,0 +1,172 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* Animated romantic background */
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Montserrat', sans-serif;
+    /* Changed to Montserrat */
+    overflow: hidden;
+}
+
+/* Import Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Floating Hearts Background Effect */
+.bg-heart {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 2rem;
+    animation: floatHeart 10s linear infinite;
+    z-index: -1;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.65);
+    /* Slightly more transparent */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.question,
+.success-message {
+    font-family: 'Montserrat', sans-serif;
+    /* Geometric sans */
+    font-weight: 900;
+    /* Bold/Heavy like Lemon/Milk */
+    text-transform: uppercase;
+    /* Lemon/Milk style */
+    color: #ff3366;
+    /* More vibrant pink/red */
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+    /* Adjusted letter spacing */
+    line-height: 1.2;
+}
+
+.gif-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    max-height: 250px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    min-height: 70px;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 800;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+    /* Consistent font */
+    text-transform: uppercase;
+}
+
+.yes-btn {
+    background-color: #ff4d6d;
+    /* Romantic Pink/Red */
+    color: white;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.yes-btn:hover {
+    background-color: #d63353;
+    transform: scale(1.1) rotate(-3deg);
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+}
+
+.no-btn {
+    background-color: #ffffff;
+    color: #ff4d6d;
+    border: 2px solid #ff4d6d;
+    transition: top 0.4s ease, left 0.4s ease, transform 0.2s ease;
+    /* Smooth movement */
+}
+
+.no-btn:hover {
+    background-color: #fff0f3;
+}
+
+/* Class to apply when the button starts moving */
+.moving {
+    position: fixed;
+    z-index: 1000;
+}
+
+/* Confetti styles */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: fall linear forwards;
+    z-index: 2000;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
